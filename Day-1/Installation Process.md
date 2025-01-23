@@ -6,6 +6,7 @@
 - Setup and configure AWS CLI using the `aws configure` command
 - Install and configure eksctl using the steps mentioned [here]("https://eksctl.io/installation/")
 - Install and configure kubectl as mentioned [here]("https://kubernetes.io/docs/tasks/tools/")
+
 **After installation you should install the following to work on Prometheus, Grafan & Alertmanager. Either you can use PowerShell/GitBash/VScode**
     1. eksctl
     2. kubectl
