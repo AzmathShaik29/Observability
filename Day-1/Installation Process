@@ -39,4 +39,6 @@ winget install helm
 # Or download and install manually
 # Download the Windows binary from https://get.helm.sh/helm-v3.14.2-windows-amd64.zip
 # Extract it and add the folder to your PATH
-
+Verify installation:
+- helm version
+eksctl create cluster --name=observability --region=us-east-1 --zones=us-east-1a,us-east-1b --without-nodegroup
