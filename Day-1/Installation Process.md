@@ -95,7 +95,7 @@ helm repo update
 kubectl create ns monitoring
 ```
 ```bash
-cd day-2
+# Here in the same folder I'm using the custom_kube_prometheus_stack.yml file for Alertmanager
 
 helm install monitoring prometheus-community/kube-prometheus-stack \
 -n monitoring \
@@ -112,7 +112,7 @@ kubectl port-forward service/prometheus-operated -n monitoring 9090:9090
 ```
 
 **NOTE:** If you are using an EC2 Instance or Cloud VM, you need to pass `--address 0.0.0.0` to the above command. Then you can access the UI on <instance-ip:port>
-
+# For e.g: kubectl port-forward service/prometheus-operated -n monitoring 9090:9090 --address 0.0.0.0
 - **Grafana UI**: password is `prom-operator`
 ```bash
 kubectl port-forward service/monitoring-grafana -n monitoring 8080:80
