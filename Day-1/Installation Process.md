@@ -79,9 +79,10 @@ eksctl create nodegroup --cluster=observability \
                         --appmesh-access \
                         --alb-ingress-access \
                         --node-private-networking
-```
-Update ./kube/config file
+
+# Update ./kube/config file
 aws eks update-kubeconfig --name observability
+```
 
 ### 🧰 Step 2: Install kube-prometheus-stack
 ```bash
