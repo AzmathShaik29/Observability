@@ -6,11 +6,14 @@
 - Setup and configure AWS CLI using the `aws configure` command
 - Install and configure eksctl using the steps mentioned [here]("https://eksctl.io/installation/")
 - Install and configure kubectl as mentioned [here]("https://kubernetes.io/docs/tasks/tools/")
-### After installation you should install the following to work on Prometheus, Grafan & Alertmanager. Either you can use PowerSheel/GitBash/VScode
+### After installation you should install the following to work on Prometheus, Grafan & Alertmanager. Either you can use PowerShell/GitBash/VScode
     1. eksctl
     2. kubectl
     3. helm
-### Using Chocolatey
+
+### eksctl
+
+Using Chocolatey
 - choco install eksctl
 
 Or download and install manually
@@ -21,7 +24,9 @@ Add to PATH: C:\Program Files\eksctl
 Verify installation:
 - eksctl version
 
-### Using Chocolatey
+### kubectl
+
+Using Chocolatey
 - choco install kubernetes-cli
 
 Or download directly
@@ -33,7 +38,8 @@ Move-Item .\kubectl.exe -Destination 'C:\Program Files\kubectl\'
 Verify installation:
 - kubectl version --client
 
-#$$ Using Chocolatey (recommended)
+### helm
+Using Chocolatey (recommended)
 - choco install kubernetes-helm
 
 Or using winget
