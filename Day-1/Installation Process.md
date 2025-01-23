@@ -15,7 +15,7 @@
 ![image](https://github.com/user-attachments/assets/c996bc93-ab4e-4ef5-a702-bb02e3e7ccb1)
 ![image](https://github.com/user-attachments/assets/36aec483-0d02-409b-9f52-9cb868b86c55)
 
-4. Once Access and Secret keys are created configure them as shown in below image
+4. Once the Access and Secret keys are generated then you are ready to configure them as shown in below image
   
 ![image](https://github.com/user-attachments/assets/5614fd31-9151-442c-8a87-f05fc7a44132)
 
