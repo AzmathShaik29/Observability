@@ -12,6 +12,7 @@
     3. helm
 ### Using Chocolatey
 - choco install eksctl
+
 Or download and install manually
 curl.exe -O "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Windows_amd64.zip"
 Expand-Archive eksctl_Windows_amd64.zip -DestinationPath "C:\Program Files\eksctl"
@@ -20,24 +21,28 @@ Add to PATH: C:\Program Files\eksctl
 Verify installation:
 - eksctl version
 
-# Using Chocolatey
-choco install kubernetes-cli
-# Or download directly
+### Using Chocolatey
+- choco install kubernetes-cli
 
+Or download directly
 curl.exe -LO "https://dl.k8s.io/release/v1.29.0/bin/windows/amd64/kubectl.exe"
-# Move to a directory in your PATH, for example:
+
+Move to a directory in your PATH, for example:
 Move-Item .\kubectl.exe -Destination 'C:\Program Files\kubectl\'
+
 Verify installation:
 - kubectl version --client
 
-# Using Chocolatey (recommended)
-choco install kubernetes-helm
+#$$ Using Chocolatey (recommended)
+- choco install kubernetes-helm
 
-# Or using winget
+Or using winget
 winget install helm
 
-# Or download and install manually
-# Download the Windows binary from https://get.helm.sh/helm-v3.14.2-windows-amd64.zip
-# Extract it and add the folder to your PATH
+Or download and install manually
+Download the Windows binary from https://get.helm.sh/helm-v3.14.2-windows-amd64.zip
+Extract it and add the folder to your PATH
+
 Verify installation:
 - helm version
+
