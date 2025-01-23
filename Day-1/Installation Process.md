@@ -52,7 +52,7 @@ Extract it and add the folder to your PATH
 Verify installation:
 - helm version
 
-eksctl create cluster --name=observability \
+`eksctl create cluster --name=observability \
                       --region=us-east-1 \
                       --zones=us-east-1a,us-east-1b \
-                      --without-nodegroup
+                      --without-nodegroup`
