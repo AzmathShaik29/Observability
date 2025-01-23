@@ -11,7 +11,7 @@
     2. kubectl
     3. helm
 
-### eksctl
+## eksctl
 
 Using Chocolatey
 - choco install eksctl
@@ -24,7 +24,7 @@ Add to PATH: C:\Program Files\eksctl
 Verify installation:
 - eksctl version
 
-### kubectl
+## kubectl
 
 Using Chocolatey
 - choco install kubernetes-cli
@@ -38,7 +38,7 @@ Move-Item .\kubectl.exe -Destination 'C:\Program Files\kubectl\'
 Verify installation:
 - kubectl version --client
 
-### helm
+## helm
 Using Chocolatey (recommended)
 - choco install kubernetes-helm
 
