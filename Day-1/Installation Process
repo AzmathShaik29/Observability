@@ -1,7 +1,7 @@
 # 🛠️  Installation & Configurations
 ## 📦 Step 1: Create EKS Cluster
 
-### Prerequisites
+### # Prerequisites
 - Download and Install AWS Cli - Please Refer this ("https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") link
 - Setup and configure AWS CLI using the `aws configure` command
 - Install and configure eksctl using the steps mentioned [here]("https://eksctl.io/installation/")
@@ -10,6 +10,7 @@
     1. eksctl
     2. kubectl
     3. helm
+
 # Using Chocolatey
 choco install eksctl
 
