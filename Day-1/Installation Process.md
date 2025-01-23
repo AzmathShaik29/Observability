@@ -14,6 +14,9 @@
 2. Click on Create access key - once you click the keys will generate and you should download it and keep it as safe as possible
 ![image](https://github.com/user-attachments/assets/c996bc93-ab4e-4ef5-a702-bb02e3e7ccb1)
 ![image](https://github.com/user-attachments/assets/36aec483-0d02-409b-9f52-9cb868b86c55)
+3. Once Access and Secret keys are created configure them as shown in below image
+![image](https://github.com/user-attachments/assets/5614fd31-9151-442c-8a87-f05fc7a44132)
+
 
 **After installation you should install the following to work on Prometheus, Grafan & Alertmanager. Either you can use PowerShell/GitBash/VScode**
 
