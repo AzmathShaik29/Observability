@@ -10,7 +10,7 @@
     1. eksctl
     2. kubectl
     3. helm
-# Using Chocolatey
+### Using Chocolatey
 choco install eksctl
 
 # Or download and install manually
