@@ -123,6 +123,7 @@ kubectl port-forward service/monitoring-grafana -n monitoring 8080:80
 ```bash
 kubectl port-forward service/alertmanager-operated -n monitoring 9093:9093
 ```
+**NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
 
 ### 🧼 Step 5: Clean UP
 - **Uninstall helm chart**:
@@ -133,7 +134,7 @@ helm uninstall monitoring --namespace monitoring
 ```bash
 kubectl delete ns monitoring
 ```
-- **Delete Cluster & everything else**:
+- **Delete Cluster & once you delete the cluster all the associated services will get deleted**:
 ```bash
 eksctl delete cluster --name observability
 ```
