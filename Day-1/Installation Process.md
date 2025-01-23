@@ -17,6 +17,7 @@
 curl.exe -O "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Windows_amd64.zip"
 Expand-Archive eksctl_Windows_amd64.zip -DestinationPath "C:\Program Files\eksctl"
 Add to PATH: C:\Program Files\eksctl
+
 Verify installation:
 - eksctl version
 
