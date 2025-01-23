@@ -54,6 +54,8 @@ Extract it and add the folder to your PATH
 Verify installation:
 - helm version
 
+## Once all the above installations has completed then you are ready to create the AWS EKS Cluster
+
 ```bash
 eksctl create cluster --name=observability \
                       --region=us-east-1 \
