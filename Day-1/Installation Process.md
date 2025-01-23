@@ -1,11 +1,14 @@
 # 🛠️  Installation & Configurations
 ## 📦 Step 1: Create EKS Cluster
 
+![image](https://github.com/user-attachments/assets/29bde745-8398-4106-aa94-b98596e97665)
+
+
 ### Prerequisites
 - Download and Install AWS Cli - Please Refer this ("https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") link
 - Setup and configure AWS CLI using the `aws configure` command
-- Install and configure eksctl using the steps mentioned [here]("https://eksctl.io/installation/")
-- Install and configure kubectl as mentioned [here]("https://kubernetes.io/docs/tasks/tools/")
+- Install and configure eksctl using the steps mentioned ("https://eksctl.io/installation/")
+- Install and configure kubectl as mentioned in this link("https://kubernetes.io/docs/tasks/tools/")
 
 **After installation you should install the following to work on Prometheus, Grafan & Alertmanager. Either you can use PowerShell/GitBash/VScode**
 
