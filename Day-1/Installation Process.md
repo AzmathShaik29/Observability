@@ -12,8 +12,7 @@
     3. helm
 ### Using Chocolatey
 - choco install eksctl
-
-### Or download and install manually
+Or download and install manually
 curl.exe -O "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_Windows_amd64.zip"
 Expand-Archive eksctl_Windows_amd64.zip -DestinationPath "C:\Program Files\eksctl"
 Add to PATH: C:\Program Files\eksctl
