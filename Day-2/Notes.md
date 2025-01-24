@@ -64,5 +64,21 @@ kubectl run alpine-crash --image=alpine -- /bin/sh -c "exit 1"
 ```bash
 kubectl delete pod alpine-crash
 ```
+# Login to Grafana Dashboard
+
+- Select the Kubernetes/Compute Resource/Namespace (pods)
+- Select the Data Source as Premetheus and namespace as kube-system and see below screenshot like how beautiful it is.
+![image](https://github.com/user-attachments/assets/6aff28e7-0d28-4fbd-a632-cddf9b74708c)
+
+- You can create n no.of dashboards as per your requirement, as shown in below image
+![image](https://github.com/user-attachments/assets/81274ad1-522d-4c74-a756-d7549c6b5d25)
+![image](https://github.com/user-attachments/assets/75d7f6f2-e34a-455c-a4fb-e7a57cf2470d)
+
+- Apart from Prometheus, we can add more monitoring tools. We have different data source such as:
+  1. Time series databases
+  2. Logging & document databases
+  3. SQL
+  4. Cloud,  etc.,
+
 
 
