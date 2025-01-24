@@ -31,19 +31,28 @@
 - It is very important to have the node exporter and kube state metrics on your Kubernetes cluster, without this Prometheus will not get a lot of information to pull the metrics.
 - We can see 2 node exporters and 1 kube state metrics nodes are created because node exporter runs as a daemon sets.
 - Access to any one of the nodes and connect through browser using 'session manager'.
+
+**Node Exporter**
 ```bash
-kubectl get pods -n monitoring 
+kubectl get pods -n monitoring
+kubectl get svc -n monitoring
 ```
 curl 10.214.223.18 (IP Address of your node exporter):9100 (Port of your node exporter)/metrics
 
 - With the above command you can see all the information that your node exporter is collecting periodically, below screenshot for your quick reference.
 ![image](https://github.com/user-attachments/assets/eafc510d-d9d1-4230-b452-5a9c175a3c36)
 
-- Will take any one of the query lets say "node_cpu_seconds_total{cpu="0",mode="user"}" and hit in the Prometheus and see the result it has given in below screenshot
+- Will take any one of the query lets say "node_cpu_seconds_total{cpu="0",mode="user"}" and hit in the Prometheus and see the result it has given in below screenshot. You can select the "Graph" to see all the data.
 ![image](https://github.com/user-attachments/assets/1e90fd39-9256-42ad-a58a-c7a25beecc24)
 
+***Kube State Metrics**
+curl 12.256.358.11:8080/metrics
 
+- With the above command we can see all the information that your kube state metrics collects.
+![image](https://github.com/user-attachments/assets/28b8527a-ae77-4204-86d4-e31183b706eb)
 
+- The below screenshot shows the information related to the container status is in running state
+![image](https://github.com/user-attachments/assets/17587d5f-58ed-45ab-ab30-e819decaca3d)
 
 
 
