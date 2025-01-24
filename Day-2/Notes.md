@@ -11,10 +11,10 @@
 - It allows you to retrieve and manipulate time series data, perform mathematical operations, aggregate data, and much more.
 
 - 🔑 Key Features of PromQL:
-    - Selecting Time Series: You can select specific metrics with filters and retrieve their data.
-    - Mathematical Operations: PromQL allows for mathematical operations on metrics.
-    - Aggregation: You can aggregate data across multiple time series.
-    - Functionality: PromQL includes a wide range of functions to analyze and manipulate data.
+    - Data Aggregation: Facilitates aggregating data across multiple time series.
+    - Comprehensive Functions: Offers a diverse set of functions for data analysis and manipulation.
+    - Time Series Selection: Enables filtering and retrieving data from specific metrics.
+    - Mathematical Operations: Supports performing calculations on metric data.
 
 ## 💡 Basic Examples of PromQL
 - `container_cpu_usage_seconds_total`
