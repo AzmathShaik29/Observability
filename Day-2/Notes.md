@@ -54,7 +54,15 @@ curl 12.256.358.11:8080/metrics
 - The below screenshot shows the information related to the container status is in running state
 ![image](https://github.com/user-attachments/assets/17587d5f-58ed-45ab-ab30-e819decaca3d)
 
+- If you hit *kube_pod_container_status_restarts_total{namespace="default"}* query in Prometheus dashboard you will not get any data because we don't have anything there. For this will create pod called "alpine" to see the graph.
+```bash
+kubectl run alpine-crash --image=alpine -- /bin/sh -c "exit 1"
+```
+![image](https://github.com/user-attachments/assets/bedc108d-4b61-4e51-9333-19914a63fc9d)
 
-
+- Delete the pod after seeing the graph
+```bash
+kubectl delete pod alpine-crash
+```
 
 
