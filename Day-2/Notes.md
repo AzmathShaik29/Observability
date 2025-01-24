@@ -27,7 +27,7 @@
 **As per the steps performed in the Day-1, herein I'm continuing from there.**
 
 - We will take our AWS account, because this Kubernetes cluster is running on AWS. Will go to the EC2 instance where we find 2 EC2 instance (which are the nodes of the Kubernetes cluster).
-- - When you are installing the kube Prometheus stack - along with alertmanager, Grafana, and Prometheus it will also install the node exporter and kube state metrics.
+- When you are installing the kube Prometheus stack - along with alertmanager, Grafana, and Prometheus it will also install the node exporter and kube state metrics.
 - It is very important to have the node exporter and kube state metrics on your Kubernetes cluster, without this Prometheus will not get a lot of information to pull the metrics.
 - We can see 2 node exporters and 1 kube state metrics nodes are created because node exporter runs as a daemon sets.
 - Access to any one of the nodes and connect through browser using 'session manager'.
