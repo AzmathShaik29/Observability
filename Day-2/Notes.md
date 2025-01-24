@@ -23,4 +23,26 @@
     - Return all time series with the metric `container_cpu_usage_seconds_total` and the given `namespace` and `pod` labels.
 - `container_cpu_usage_seconds_total{namespace="kube-system",pod=~"kube-proxy.*"}[5m]`
     - Return a whole range of time (in this case 5 minutes up to the query time) for the same vector, making it a range vector.
+ 
+**As per the steps performed in the Day-1, herein I'm continuing from there.**
+
+- We will take our AWS account, because this Kubernetes cluster is running on AWS. Will go to the EC2 instance where we find 2 EC2 instance (which are the nodes of the Kubernetes cluster).
+- Access to any one of the nodes and connect through browser using 'session manager'.
+```bash
+kubectl get svc -n monitoring 
+```
+curl 10.214.223.18 (IP Address of your node exporter):9100 (Port of your node exporter)/metrics
+
+- With the above command you can see all the information that your node exporter is collecting periodically, below screenshot for your quick reference.
+![image](https://github.com/user-attachments/assets/eafc510d-d9d1-4230-b452-5a9c175a3c36)
+
+- Will take any one of the query lets say "node_cpu_seconds_total{cpu="0",mode="user"}" and hit in the Prometheus and see the result it has given in below screenshot
+![image](https://github.com/user-attachments/assets/1e90fd39-9256-42ad-a58a-c7a25beecc24)
+
+
+
+
+
+
+
 
