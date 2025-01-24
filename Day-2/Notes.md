@@ -75,6 +75,8 @@ kubectl delete pod alpine-crash
 ![image](https://github.com/user-attachments/assets/75d7f6f2-e34a-455c-a4fb-e7a57cf2470d)
 
 - Apart from Prometheus, we can add more monitoring tools. We have different data source such as:
+  ![image](https://github.com/user-attachments/assets/a5c61957-8319-4ac3-8987-bc96acd17570)
+
   1. Time series databases
   2. Logging & document databases
   3. SQL
