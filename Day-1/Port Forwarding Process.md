@@ -2,7 +2,7 @@
 ## 📦 Step 1: Create EKS Cluster
 
 ### Prerequisites
-- Download and Install AWS Cli - Please Refer this ("https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") link
+- Download and Install AWS CLI - Please Refer this ("https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") link
 - Setup and configure AWS CLI using the `aws configure` command
 - Install and configure eksctl using the steps mentioned in this link or follow below steps ("https://eksctl.io/installation/")
 - Install and configure kubectl as mentioned in this link or follow below steps ("https://kubernetes.io/docs/tasks/tools/")
