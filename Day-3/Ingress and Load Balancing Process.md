@@ -106,3 +106,41 @@ aws eks update-kubeconfig --name observability
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
+
+### 🚀 Step 3: Deploy the chart into a new namespace "monitoring"
+```bash
+kubectl create ns monitoring
+```
+```bash
+# Here in the same folder I'm using the custom_kube_prometheus_stack.yml file for Alertmanager
+
+helm install monitoring prometheus-community/kube-prometheus-stack \
+-n monitoring \
+-f ./custom_kube_prometheus_stack.yml
+```
+
+### Step 4: Install the AWS Load Balancer Controller
+```bash
+# Add the EKS chart repo
+helm repo add eks https://aws.github.io/eks-charts
+helm repo update
+```
+```bash
+# Install the AWS Load Balancer Controller
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=observability \
+  --set serviceAccount.create=true
+```
+
+### Step 5: Create an ingress for your monitoring services. Create a file named monitoring-ingress.yaml in the same folder and apply the ingress configuration.
+```bash
+kubectl apply -f monitoring-ingress.yaml
+```
+
+### ✅ Step 6: Verify the Installation
+```bash
+kubectl get all -n monitoring
+```
+
+# Below are the commands 
