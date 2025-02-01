@@ -151,7 +151,7 @@ kubectl get ingress -n monitoring monitoring-ingress
 ```bash
 kubectl get ingress -n monitoring
 ```
-You should see an ADDRESS (the ALB URL). If not then check the logs:
+You should see an ADDRESS (the ALB URL). If not then check the Ingress Controller Logs
 ```bash
 kubectl logs -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller
 ```
