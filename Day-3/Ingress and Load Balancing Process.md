@@ -111,22 +111,22 @@ helm repo update
 ```bash
 kubectl create ns monitoring
 ```
-```bash
-# Here in the same folder I'm using the custom_kube_prometheus_stack.yml file for Alertmanager
 
+**Here in the same folder I'm using the custom_kube_prometheus_stack.yml file for Alertmanager**
+```bash
 helm install monitoring prometheus-community/kube-prometheus-stack \
 -n monitoring \
 -f ./custom_kube_prometheus_stack.yml
 ```
 
 ### Step 4: Install the AWS Load Balancer Controller
+**Add the EKS chart repo**
 ```bash
-# Add the EKS chart repo
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update
 ```
+**Install the AWS Load Balancer Controller**
 ```bash
-# Install the AWS Load Balancer Controller
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
   --set clusterName=observability \
@@ -138,7 +138,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 kubectl apply -f monitoring-ingress.yaml
 ```
 
-### ✅ Step 6: Verify the Installation
+- Verify the Installation
 ```bash
 kubectl get all -n monitoring
 ```
@@ -155,7 +155,7 @@ You should see an ADDRESS (the ALB URL). If not then check the logs:
 ```bash
 kubectl logs -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller
 ```
-If you get AccessDenied error then follow below steps to create an IAM policy with below configuration.
+### Step 6: If you get AccessDenied error in the logs then follow below steps to create an IAM policy with below configuration.
 
 **A.** Check the node group IAM role which is attached to the EC2 instance.
 
@@ -219,17 +219,16 @@ Which one should you use?
 kubectl get ingress -n monitoring
 ```
 
-D. If the above commands doesn't work then try below one, make sure that you copied the arn of the policy:
+D. If the above commands doesn't work then try below one, make sure that you copied the arn of the policy and role name:
 ```bash
-aws iam attach-role-policy --role-name eksctl-observability-nodegroup-obs-NodeInstanceRole-pNNdF6JpRAhp --policy-arn <copy your policy arn>
+aws iam attach-role-policy --role-name <copy the role name> --policy-arn <copy the policy arn>
 ```
-
-Then following step C, then you should see the ADDRESS of your ALB IP.
+- Then following step C, then you should see the ADDRESS of your ALB IP.
 
 
 **NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
 
-### 🧼 Step 6: Clean UP
+### 🧼 Step 7: Clean UP
 - **Uninstall helm chart**:
 ```bash
 helm uninstall monitoring --namespace monitoring
