@@ -234,9 +234,9 @@ kubectl get ingress -n monitoring monitoring-ingress
 
 **You can then access your services at:**
 
-- Prometheus: http://<ALB-URL>/prometheus
-- Grafana: http://<ALB-URL>/grafana
-- Alertmanager: http://<ALB-URL>/alertmanager
+- Prometheus: http://ALB-URL/prometheus
+- Grafana: http://ALB-URL/grafana
+- Alertmanager: http://ALB-URL/alertmanager
 
 
 **NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
