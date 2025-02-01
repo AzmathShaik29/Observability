@@ -225,10 +225,23 @@ aws iam attach-role-policy --role-name <copy the role name> --policy-arn <copy t
 ```
 - Then following step C, then you should see the ADDRESS of your ALB IP.
 
+### Step 7: After applying these changes:
+1. Wait a few minutes for the ALB to be provisioned
+2. Get the ALB URL:
+```bash
+kubectl get ingress -n monitoring monitoring-ingress
+```
+
+**You can then access your services at:**
+
+- Prometheus: http://<ALB-URL>/prometheus
+- Grafana: http://<ALB-URL>/grafana
+- Alertmanager: http://<ALB-URL>/alertmanager
+
 
 **NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
 
-### 🧼 Step 7: Clean UP
+### 🧼 Step 8: Clean UP
 - **Uninstall helm chart**:
 ```bash
 helm uninstall monitoring --namespace monitoring
