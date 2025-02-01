@@ -1,5 +1,5 @@
 # 🛠️  Installation & Configurations - With Ingress and Load Balancer
-## 📦 Step 1: Create EKS Cluster
+## Step 1: Create EKS Cluster
 
 ### Prerequisites
 - Download and Install AWS CLI - Please Refer this ("https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") link
@@ -101,13 +101,13 @@ eksctl create nodegroup --cluster=observability \
 aws eks update-kubeconfig --name observability
 ```
 
-### 🧰 Step 2: Install kube-prometheus-stack
+### Step 2: Install kube-prometheus-stack
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
 
-### 🚀 Step 3: Deploy the chart into a new namespace "monitoring"
+### Step 3: Deploy the chart into a new namespace "monitoring"
 ```bash
 kubectl create ns monitoring
 ```
