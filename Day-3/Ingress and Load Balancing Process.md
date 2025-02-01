@@ -143,4 +143,27 @@ kubectl apply -f monitoring-ingress.yaml
 kubectl get all -n monitoring
 ```
 
-# Below are the commands 
+- Checking ALB URL:
+```bash
+kubectl get ingress -n monitoring monitoring-ingress
+``` 
+
+
+
+
+**NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
+
+### 🧼 Step 6: Clean UP
+- **Uninstall helm chart**:
+```bash
+helm uninstall monitoring --namespace monitoring
+```
+- **Delete namespace**:
+```bash
+kubectl delete ns monitoring
+```
+- **Delete Cluster & once you delete the cluster all the associated services will get deleted**:
+```bash
+eksctl delete cluster --name observability
+```
+
