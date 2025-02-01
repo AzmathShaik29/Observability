@@ -133,7 +133,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.create=true
 ```
 
-### Step 5: Create an ingress for your monitoring services. Create a file named monitoring-ingress.yaml in the same folder and apply the ingress configuration.
+### Step 5: Create an ingress file for monitoring services and apply the configuration.
 ```bash
 kubectl apply -f monitoring-ingress.yaml
 ```
