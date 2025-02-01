@@ -155,7 +155,7 @@ You should see an ADDRESS (the ALB URL). If not then check the Ingress Controlle
 ```bash
 kubectl logs -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller
 ```
-### Step 6: If you get AccessDenied error in the logs then follow below steps to create an IAM policy with below configuration.
+### Step 6: AccessDenied Error: Create an IAM policy with below configuration.
 
 **A.** Check the node group IAM role which is attached to the EC2 instance.
 
