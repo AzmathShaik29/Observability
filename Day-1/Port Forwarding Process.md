@@ -1,5 +1,5 @@
 # 🛠️  Installation & Configurations - With Port Forwarding
-## 📦 Step 1: Create EKS Cluster
+## Step 1: Create EKS Cluster
 
 ### Prerequisites
 - Download and Install AWS CLI - Please Refer this ("https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html") link
@@ -67,7 +67,7 @@ Extract it and add the folder to your PATH
 Verify installation:
 - helm version
 
-## Once all the above installations has completed then you are ready to create the AWS EKS Cluster
+**Once all the above installations has completed then you are ready to create the AWS EKS Cluster**
 
 ```bash
 eksctl create cluster --name=observability \
@@ -101,13 +101,13 @@ eksctl create nodegroup --cluster=observability \
 aws eks update-kubeconfig --name observability
 ```
 
-### 🧰 Step 2: Install kube-prometheus-stack
+### Step 2: Install kube-prometheus-stack
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 ```
 
-### 🚀 Step 3: Deploy the chart into a new namespace "monitoring"
+### Step 3: Deploy the chart into a new namespace "monitoring"
 ```bash
 kubectl create ns monitoring
 ```
@@ -119,7 +119,7 @@ helm install monitoring prometheus-community/kube-prometheus-stack \
 -f ./custom_kube_prometheus_stack.yml
 ```
 
-### ✅ Step 4: Verify the Installation
+### Step 4: Verify the Installation
 ```bash
 kubectl get all -n monitoring
 ```
@@ -142,7 +142,7 @@ kubectl port-forward service/alertmanager-operated -n monitoring 9093:9093
 ```
 **NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
 
-### 🧼 Step 5: Clean UP
+### Step 5: Clean UP
 - **Uninstall helm chart**:
 ```bash
 helm uninstall monitoring --namespace monitoring
