@@ -10,9 +10,8 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
 
 # If you have the certificates then use below 2 snippet code otherwise use the above snippet code
-	
-#    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-#    alb.ingress.kubernetes.io/ssl-redirect: '443'
+#   alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+#   alb.ingress.kubernetes.io/ssl-redirect: '443'
 spec:
   rules:
   - http:
