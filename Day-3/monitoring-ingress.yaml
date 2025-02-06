@@ -8,10 +8,13 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-
-# If you have the certificates then use below 2 snippet code otherwise use the above snippet code
-#   alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
-#   alb.ingress.kubernetes.io/ssl-redirect: '443'
+    # Uncomment below if you have HTTPS certificates
+    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    # alb.ingress.kubernetes.io/ssl-redirect: '443'
+    # Custom health check paths
+    alb.ingress.kubernetes.io/healthcheck-path: /prometheus/-/healthy  # Prometheus health check
+    alb.ingress.kubernetes.io/healthcheck-path: /alertmanager/-/healthy  # Alertmanager health check
+    alb.ingress.kubernetes.io/healthcheck-path: /api/health  # Grafana health check
 spec:
   rules:
   - http:

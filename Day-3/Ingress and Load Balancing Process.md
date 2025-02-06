@@ -107,19 +107,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 ```
 
-### Step 3: Deploy the chart into a new namespace "monitoring"
-```bash
-kubectl create ns monitoring
-```
-
-**Here in the same folder I'm using the custom_kube_prometheus_stack.yml file for Alertmanager**
-```bash
-helm install monitoring prometheus-community/kube-prometheus-stack \
--n monitoring \
--f ./custom_kube_prometheus_stack.yml
-```
-
-### Step 4: Install the AWS Load Balancer Controller
+### Step 3: Install the AWS Load Balancer Controller
 **Add the EKS chart repo**
 ```bash
 helm repo add eks https://aws.github.io/eks-charts
@@ -133,9 +121,22 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.create=true
 ```
 
+### Step 4: Deploy the chart into a new namespace "monitoring"
+```bash
+kubectl create ns monitoring
+```
+
 ### Step 5: Create an ingress file for monitoring services and apply the configuration.
 ```bash
 kubectl apply -f monitoring-ingress.yaml
+```
+
+- Here in the same folder I'm using the monitoring-ingress.yaml and custom_kube_prometheus_stack.yml file for Alertmanager.
+- Once you configured the ingress file then the ALB will get created, copy the ALB DNS name and paste it in custom_kube_prometheus_stack.yml for Alertmanager and Prometheus.
+```bash
+helm install monitoring prometheus-community/kube-prometheus-stack \
+-n monitoring \
+-f ./custom_kube_prometheus_stack.yml
 ```
 
 - Verify the Installation
@@ -238,6 +239,8 @@ kubectl get ingress -n monitoring monitoring-ingress
 - Grafana: http://ALB-URL/grafana
 - Alertmanager: http://ALB-URL/alertmanager
 
+- **Grafana UI Password: `prom-operator`**
+
 
 **NOTE:** Once you have performed all the steps then don't forget to destroy everything, otherwise AWS will charge you.
 
@@ -254,4 +257,3 @@ kubectl delete ns monitoring
 ```bash
 eksctl delete cluster --name observability
 ```
-

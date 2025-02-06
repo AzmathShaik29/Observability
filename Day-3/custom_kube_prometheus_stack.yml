@@ -1,29 +1,24 @@
 alertmanager:
   alertmanagerSpec:
-    # Selects Alertmanager configuration based on these labels. Ensure that the Alertmanager configuration has matching labels.
-    # ✅ Solves error: Misconfigured Alertmanager selectors can lead to missing alert configurations.
-    # ✅ Solves error: Alertmanager wasn't able to findout the applied CRD (kind: Alertmanagerconfig)
+    externalUrl: "http://<LOAD_BALANCER_DNS>/alertmanager"  # Replace <LOAD_BALANCER_DNS> with your actual LB DNS
+    routePrefix: /alertmanager  # Explicitly set the route prefix
     alertmanagerConfigSelector:
       matchLabels:
         release: monitoring
-
-    # Sets the number of Alertmanager replicas to 3 for high availability.
-    # ✅ Solves error: Single replica can cause alerting issues during pod failures.
-    # ✅ Solves error: Alertmanager Cluster Status is Disabled (GitHub issue)
     replicas: 2
-
-    # Sets the strategy for matching Alertmanager configurations. 'None' means no specific matching strategy.
-    # ✅ Solves error: Incorrect matcher strategy can lead to unhandled alert configurations.
-    # ✅ Solves error: Get rid of namespace matchers when creating AlertManagerConfig (GitHub issue)
-    alertmanager:
-      alertmanagerSpec:
-       externalUrl: http://k8s-monitori-monitori-75f61a17ac-944605871.us-east-1.elb.amazonaws.com/alertmanager
-       alertmanagerConfigSelector:
-        matchLabels:
-         release: monitoring
-       replicas: 2
-       alertmanagerConfigMatcherStrategy:
-        type: None
+    alertmanagerConfigMatcherStrategy:
+      type: None
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    securityContext:
+      fsGroup: 2000
+      runAsNonRoot: true
+      runAsUser: 1000
 
 grafana:
   grafana.ini:
@@ -33,8 +28,5 @@ grafana:
 
 prometheus:
   prometheusSpec:
-    externalUrl: "/prometheus"
-
-alertmanager:
-  alertmanagerSpec:
-    externalUrl: "/alertmanager"
+    externalUrl: "http://<LOAD_BALANCER_DNS>/prometheus"  # Replace <LOAD_BALANCER_DNS> with your actual LB DNS
+    routePrefix: /prometheus  # Explicitly set the route prefix
