@@ -136,7 +136,7 @@ kubectl delete pod -n monitoring -l app.kubernetes.io/name=alertmanager
 kubectl get pods -n monitoring
 kubectl logs -n monitoring -l app.kubernetes.io/name=alertmanager
 ```
-# Solution
+# SOLUTION
 ## Step 1: Verify Application Configuration
 - Prometheus Configuration
 - In your custom_kube_prometheus_stack.yml, ensure the externalUrl for Prometheus is set correctly:
