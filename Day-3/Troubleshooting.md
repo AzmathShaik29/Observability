@@ -5,9 +5,9 @@
 
 ## AccessDenied Error: Create an IAM policy with below configuration.
 
-**A.** Check the node group IAM role which is attached to the EC2 instance.
+1️⃣ Check the node group IAM role which is attached to the EC2 instance.
 
-**B.** Go to policy and create, and name it as "AWSLoadBalancerControllerIAMPolicy"
+2️⃣ Go to policy and create, and name it as "AWSLoadBalancerControllerIAMPolicy"
 ```bash
 {
     "Version": "2012-10-17",
@@ -32,7 +32,7 @@
     ]
 }
 ```
-**C.** Attach the created policy to the role and run below commands:
+3️⃣ Attach the created policy to the role and run below commands:
 ```bash
 kubectl delete pod -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controller
 ```
@@ -67,11 +67,11 @@ Which one should you use?
 kubectl get ingress -n monitoring
 ```
 
-D. If the above commands doesn't work then try below one, make sure that you copied the arn of the policy and role name:
+4️⃣ If the above commands doesn't work then try below one, make sure that you copied the arn of the policy and role name:
 ```bash
 aws iam attach-role-policy --role-name <copy the role name> --policy-arn <copy the policy arn>
 ```
-- Then following step C, then you should see the ADDRESS of your ALB IP.
+- Then follow the step 3 and you should see the ADDRESS of your ALB IP.
 
 ## ERROR 2
 - The ALB URL's didn't work for prometheus and grafana - it say's site can't be reached and for alertmanager it say's 502 bad gate way
@@ -105,8 +105,9 @@ kubectl logs -n kube-system -l app.kubernetes.io/name=aws-load-balancer-controll
 - With the above changes I can access to the Grafana but I cannot access Prometheus (404 page not found) and Alertmanager (502 bad Gateway)
 
 ## ERROR 4
-- Later I got an issue with the alertmanager, like it is crashing everytimg
-## Step 1: Edit the StatefulSet
+- Later I got an issue with the alertmanager, like it is crashing everytime.
+
+1️⃣ Edit the StatefulSet
 ```bash
 kubectl get pods -n monitoring
 ```
@@ -127,60 +128,69 @@ kubectl edit statefulset alertmanager-monitoring-kube-prometheus-alertmanager -n
 --web.external-url=https://your-alertmanager-domain
 ```
 Save and exit the editor.
-## Step 2: Restart Alertmanager
+
+2️⃣ Restart Alertmanager
 ```bash
 kubectl delete pod -n monitoring -l app.kubernetes.io/name=alertmanager
 ```
-## Step 3: Verify Logs
+3️⃣ Verify Logs
 ```bash
 kubectl get pods -n monitoring
 kubectl logs -n monitoring -l app.kubernetes.io/name=alertmanager
 ```
 # SOLUTION
-## Step 1: Verify Application Configuration
-- Prometheus Configuration
-- In your custom_kube_prometheus_stack.yml, ensure the externalUrl for Prometheus is set correctly:
+1️⃣ Verify Application Configuration
+
+**Prometheus Configuration**
+- In the ```custom_kube_prometheus_stack.yml```, ensure the externalUrl for Prometheus is set correctly:
 ```bash
 prometheus:
   prometheusSpec:
     externalUrl: "http://<LOAD_BALANCER_DNS>/prometheus"  # Replace with your LB DNS
     routePrefix: /prometheus  # Explicitly set the route prefix
 ```
-## Step 2: Verify Ingress Configuration
-- Alertmanager Configuration
+
+**Alertmanager Configuration**
+- Similarly, ensure the externalUrl for Alertmanager is set correctly:
 ```bash
 alertmanager:
   alertmanagerSpec:
     externalUrl: "http://<LOAD_BALANCER_DNS>/alertmanager"  # Replace with your LB DNS
     routePrefix: /alertmanager  # Explicitly set the route prefix
 ```
+2️⃣ Verify Ingress Configuration
+
+- Modify the annotations in ```monitoring-ingress``` configuration file
 ```bash
     alb.ingress.kubernetes.io/healthcheck-path: /prometheus/-/healthy  # Prometheus health check
     alb.ingress.kubernetes.io/healthcheck-path: /alertmanager/-/healthy  # Alertmanager health check
     alb.ingress.kubernetes.io/healthcheck-path: /api/health  # Grafana health check
 ```
-## Step 3: Verify Application Subpath Handling
-- Prometheus Subpath Handling
+3️⃣ Verify Application Subpath Handling
+
+**Prometheus Subpath Handling**
+- Prometheus and Alertmanager may not handle subpaths (/prometheus, /alertmanager) by default. 
 ```bash
 prometheus:
   prometheusSpec:
     externalUrl: "http://<LOAD_BALANCER_DNS>/prometheus"
     routePrefix: /prometheus
 ```
-- Alertmanager Subpath Handling
+**Alertmanager Subpath Handling**
 ```bash
 alertmanager:
   alertmanagerSpec:
     externalUrl: "http://<LOAD_BALANCER_DNS>/alertmanager"
     routePrefix: /alertmanager
 ```
-Step 4: Test Access
+4️⃣ Test Access
 After applying the above changes, test accessing the endpoints:
 
 1. Prometheus: http://<LOAD_BALANCER_DNS>/prometheus
 2. Alertmanager: http://<LOAD_BALANCER_DNS>/alertmanager
 3. Grafana: http://<LOAD_BALANCER_DNS>/grafana
 
+**Below are few troubleshooting commands**
 - ALB Target Group Health Checks
 ```bash
 aws elbv2 describe-target-health --target-group-arn <TARGET_GROUP_ARN>
