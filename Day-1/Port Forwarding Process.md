@@ -7,7 +7,7 @@
 - Install and configure eksctl using the steps mentioned in this link or follow below steps ("https://eksctl.io/installation/")
 - Install and configure kubectl as mentioned in this link or follow below steps ("https://kubernetes.io/docs/tasks/tools/")
 
-## How to conffigure AWS CLI
+## How to configure AWS CLI
 **Login to your AWS Account (root/IAM user) through console and follow below steps to get the Access & Secret Keys:**
 
 1. Go to Security Credentials
